@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Board</title>
     <style>
-        /* Container for the boxes */
+        /* Container for boxes */
         .container {
             display: grid;
             grid-template-columns: repeat(40, 20px); /* 40 columns */
@@ -14,17 +14,12 @@
             margin: 20px auto;
         }
 
-        /* Individual boxes */
+        /* Individual squares */
         .square {
             width: 20px;
             height: 20px;
             background-color: #ccc;
             transition: background-color 1s; /* smooth transition */
-        }
-
-        /* Change color on hover */
-        .square:hover {
-            background-color: #ff6600; /* hover color */
         }
     </style>
 </head>
@@ -35,10 +30,32 @@
     <script>
         const container = document.getElementById('container');
 
+        // Function to generate random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
         // Create 800 boxes
         for (let i = 0; i < 800; i++) {
             const box = document.createElement('div');
             box.classList.add('square');
+
+            // Hover effect
+            box.addEventListener('mouseenter', () => {
+                const randomColor = getRandomColor();
+                box.style.backgroundColor = randomColor;
+
+                // Reset color after 1 second
+                setTimeout(() => {
+                    box.style.backgroundColor = '#ccc';
+                }, 1000);
+            });
+
             container.appendChild(box);
         }
     </script>
