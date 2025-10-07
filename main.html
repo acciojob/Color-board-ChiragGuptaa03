@@ -5,32 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Board</title>
     <style>
-        /* Container for boxes */
         .container {
             display: grid;
-            grid-template-columns: repeat(40, 20px); /* 40 columns */
+            grid-template-columns: repeat(40, 20px);
             grid-gap: 2px;
-            justify-content: center;
-            margin: 20px auto;
         }
 
-        /* Individual squares */
         .square {
             width: 20px;
             height: 20px;
             background-color: #ccc;
-            transition: background-color 1s; /* smooth transition */
+            transition: background-color 1s;
         }
     </style>
 </head>
 <body>
-
     <div class="container" id="container"></div>
 
     <script>
         const container = document.getElementById('container');
 
-        // Function to generate random color
         function getRandomColor() {
             const letters = '0123456789ABCDEF';
             let color = '#';
@@ -40,25 +34,21 @@
             return color;
         }
 
-        // Create 800 boxes
+        // Create exactly 800 squares
         for (let i = 0; i < 800; i++) {
-            const box = document.createElement('div');
-            box.classList.add('square');
+            const square = document.createElement('div');
+            square.className = 'square';
 
             // Hover effect
-            box.addEventListener('mouseenter', () => {
-                const randomColor = getRandomColor();
-                box.style.backgroundColor = randomColor;
-
-                // Reset color after 1 second
+            square.addEventListener('mouseenter', () => {
+                square.style.backgroundColor = getRandomColor();
                 setTimeout(() => {
-                    box.style.backgroundColor = '#ccc';
+                    square.style.backgroundColor = '#ccc';
                 }, 1000);
             });
 
-            container.appendChild(box);
+            container.appendChild(square);
         }
     </script>
-
 </body>
 </html>
