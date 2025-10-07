@@ -1,16 +1,47 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Board</title>
+    <style>
+        /* Container for the boxes */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(40, 20px); /* 40 columns */
+            grid-gap: 2px;
+            justify-content: center;
+            margin: 20px auto;
+        }
 
+        /* Individual boxes */
+        .square {
+            width: 20px;
+            height: 20px;
+            background-color: #ccc;
+            transition: background-color 1s; /* smooth transition */
+        }
+
+        /* Change color on hover */
+        .square:hover {
+            background-color: #ff6600; /* hover color */
+        }
+    </style>
+</head>
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+
+    <div class="container" id="container"></div>
+
+    <script>
+        const container = document.getElementById('container');
+
+        // Create 800 boxes
+        for (let i = 0; i < 800; i++) {
+            const box = document.createElement('div');
+            box.classList.add('square');
+            container.appendChild(box);
+        }
+    </script>
 
 </body>
-
 </html>
